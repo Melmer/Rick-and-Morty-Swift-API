@@ -162,7 +162,7 @@ public struct RMEpisodeFilter {
  - **Info**: Info struct in Network.swift.
  - **EpisodeModel**: EpisodeModel struct in Episode.swift.
  */
-struct RMEpisodeInfoModel: Codable {
+public struct RMEpisodeInfoModel: Codable {
     let info: Info
     let results: [RMEpisodeModel]
 }
