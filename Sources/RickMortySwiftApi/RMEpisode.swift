@@ -192,7 +192,7 @@ public struct RMEpisodeModel: Codable, Identifiable {
         case airDate = "air_date"
     }
     
-    init(id: Int, name: String, airDate: String, episode: String, characters: [String], url: String, created: String) {
+    public init(id: Int, name: String, airDate: String, episode: String, characters: [String], url: String, created: String) {
         self.id = id
         self.name = name
         self.airDate = airDate
