@@ -66,6 +66,18 @@ public struct RMEpisode {
     }
     
     /**
+     Request episodes by page number.
+     - Parameters:
+     - page: Number of result page.
+     - Returns: Array of Episode model struct.
+     */
+    public func getEpisodesByPageNumber(pageNumber: Int) async throws -> RMEpisodeInfoModel {
+        let episodeData = try await networkHandler.performAPIRequestByMethod(method: "episode/"+"?page="+String(pageNumber))
+        let infoModel: RMEpisodeInfoModel = try networkHandler.decodeJSONData(data: episodeData)
+        return infoModel
+    }
+    
+    /**
      Request all episodes.
      - Returns: Array of Episode model struct.
      */
@@ -178,6 +190,16 @@ public struct RMEpisodeModel: Codable, Identifiable {
     enum CodingKeys: String, CodingKey {
         case id, name, episode, characters, url, created
         case airDate = "air_date"
+    }
+    
+    init(id: Int, name: String, airDate: String, episode: String, characters: [String], url: String, created: String) {
+        self.id = id
+        self.name = name
+        self.airDate = airDate
+        self.episode = episode
+        self.characters = characters
+        self.url = url
+        self.created = created
     }
 }
 
