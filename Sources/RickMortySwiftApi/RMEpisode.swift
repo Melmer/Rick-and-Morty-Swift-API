@@ -71,7 +71,7 @@ public struct RMEpisode {
      - page: Number of result page.
      - Returns: Array of Episode model struct.
      */
-    public func getEpisodesByPageNumber(pageNumber: Int) async throws -> RMEpisodeInfoModel {
+    public func getEpisodesByPageNumberFullData(pageNumber: Int) async throws -> RMEpisodeInfoModel {
         let episodeData = try await networkHandler.performAPIRequestByMethod(method: "episode/"+"?page="+String(pageNumber))
         let infoModel: RMEpisodeInfoModel = try networkHandler.decodeJSONData(data: episodeData)
         return infoModel
